@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gian Gofalludhin - Professional Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+            --bg-light: #f8f9fa;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            display: block;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-light);
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .profile-container {
+            margin-bottom: 2rem;
+            perspective: 1000px;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto;
+            border: 5px solid var(--text-light);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.6s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-photo.spinning {
+            animation: spin360 1s ease-in-out;
+        }
+
+        @keyframes spin360 {
+            0% {
+                transform: rotateY(0deg) scale(1);
+            }
+            50% {
+                transform: rotateY(180deg) scale(1.1);
+            }
+            100% {
+                transform: rotateY(360deg) scale(1);
+            }
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .cta-button:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        section h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* Professional Summary */
+        .summary-box {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Experience Cards */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .experience-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .experience-card .period {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .experience-card p {
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, var(--secondary-color), #5dade2);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .skill-card:hover {
+            transform: scale(1.05);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-card p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        /* Language Skills - Variant styling */
+        #languages .skill-card {
+            background: linear-gradient(135deg, #16a085, #1abc9c);
+        }
+
+        /* Projects Section */
+        .projects-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .projects-box p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .github-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .github-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+            background: #f8f9fa;
+        }
+
+        .github-button svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* Career Direction */
+        .direction-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: var(--bg-light);
+            padding: 2rem 3rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            min-width: 280px;
+            text-align: center;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-item h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: rgba(44, 62, 80, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            nav ul li {
+                margin: 1.5rem 0;
+                opacity: 0;
+                transform: translateX(50px);
+                transition: all 0.3s ease;
+            }
+
+            nav ul.active li {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            nav ul.active li:nth-child(1) { transition-delay: 0.1s; }
+            nav ul.active li:nth-child(2) { transition-delay: 0.2s; }
+            nav ul.active li:nth-child(3) { transition-delay: 0.3s; }
+            nav ul.active li:nth-child(4) { transition-delay: 0.4s; }
+            nav ul.active li:nth-child(5) { transition-delay: 0.5s; }
+            nav ul.active li:nth-child(6) { transition-delay: 0.6s; }
+            nav ul.active li:nth-child(7) { transition-delay: 0.7s; }
+            nav ul.active li:nth-child(8) { transition-delay: 0.8s; }
+
+            nav ul li a {
+                font-size: 1.2rem;
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 6rem 1rem 4rem;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
+            }
+
+            .profile-photo img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .experience-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .summary-box,
+            .direction-box {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                width: 80%;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation for sections */
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInSection 0.8s ease forwards;
+        }
+
+        @keyframes fadeInSection {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
+        section:nth-child(6) { animation-delay: 0.6s; }
+        section:nth-child(7) { animation-delay: 0.7s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Gian.</div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#profile" class="nav-link">Profile</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#languages" class="nav-link">Languages</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#direction" class="nav-link">Direction</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="profile-container">
+            <div class="profile-photo" id="profilePhoto">
+                <img src="image/Gian1.jpeg" alt="Foto Profil Gian Gofalludhin"
+                     onerror="this.style.display='none'; this.parentElement.innerText='GG';">
+            </div>
+        </div>
+        <h1>Hi, I'm Gian Gofalludhin</h1>
+        <p>Hal-hal penting yang menggambarkan cara kerja, pengalaman, dan potensi saya sebagai talenta IT dan digital kreatif dapat Anda temukan di sini.</p>
+        <a href="#contact" class="cta-button">Contact Me</a>
+    </section>
+
+    <!-- Professional Summary -->
+    <div class="container">
+        <section id="profile">
+            <h2>Professional Summary</h2>
+            <div class="summary-box">
+                Saya adalah fresh graduate SMK jurusan Rekayasa Perangkat Lunak dengan pengalaman di bidang IT support, front-end development dasar, serta pengelolaan konten digital dan media sosial. Terbiasa bekerja di lingkungan instansi dan komunitas, menangani data, konten, serta mendukung sistem berbasis teknologi. Memiliki etos kerja yang baik, mampu bekerja dalam tim, dan siap terus berkembang mengikuti kebutuhan industri.
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h3>IT & Social Media Specialist</h3>
+                    <span class="period">Saat ini</span>
+                    <p><strong>PERBASI Kabupaten Subang</strong><br>
+                    Sebagai bagian dari tim official/manajemen PERBASI Kabupaten Subang, aku dipercaya untuk mengelola dan memelihara website resmi PERBASI Kabupaten Subang (perbasikabsubang.indonesiabasketball.org), menangani konten digital, struktur informasi, dan publikasi online untuk mendukung kegiatan organisasi dan perkembangan basket di Subang.</p>
+                </div>
+
+                <div class="experience-card">
+                    <h3>IT Intern</h3>
+                    <span class="period">Jan 2024 – Jun 2024</span>
+                    <p><strong>Pengadilan Agama Subang</strong><br>
+                    Mengelola media sosial instansi untuk publikasi informasi resmi, membuat desain poster dan konten visual, melakukan editing video dokumentasi kegiatan, serta membantu pengembangan tampilan website internal menggunakan HTML, CSS, dan JavaScript dasar.</p>
+                </div>
+
+                <div class="experience-card">
+                    <h3>Video Editor & Social Media Admin</h3>
+                    <span class="period">Nov 2024 – Sekarang</span>
+                    <p><strong>Hunters Basketball</strong><br>
+                    Mengelola akun media sosial klub basket, menangani dokumentasi kegiatan, editing video, serta menjadwalkan dan mempublikasikan konten secara konsisten untuk membangun brand komunitas.</p>
+                </div>
+
+                <div class="experience-card">
+                    <h3>Document Administration & Letter Drafting</h3>
+                    <span class="period">Project-Based</span>
+                    <p><strong>Perumahan Ciloa Indah & PKBM Insan Madani</strong><br>
+                    Menangani proyek pembuatan dan pengelolaan surat-menyurat resmi untuk beberapa instansi dan komunitas, termasuk Perumahan Ciloa Indah dan PKBM Insan Madani. Dipercaya untuk menyusun dokumen yang rapi, formal, dan sesuai kebutuhan administratif.</p>
+                </div>
+
+                <div class="experience-card">
+                    <h3>Admin</h3>
+                    <span class="period">Jul 2025 – Okt 2025</span>
+                    <p><strong>Klinik Insan Madani</strong><br>
+                    Mengelola data pasien dan arsip administrasi, menyusun laporan bulanan menggunakan Microsoft Word dan Excel, serta mendukung operasional klinik melalui koordinasi dengan tim medis dan staf.</p>
+                </div>
+
+                <div class="experience-card">
+                    <h3>Founder & Operator</h3>
+                    <span class="period">Masa Sekolah</span>
+                    <p><strong>PULSAFAT (Pulsa Cefat) – Bisnis Pulsa Mandiri</strong><br>
+                    Membangun dan mengelola bisnis pulsa bernama PULSAFAT (Pulsa Cefat) sejak masih bersekolah. Bisnis ini berfokus pada layanan pengisian pulsa cepat dan terjangkau untuk lingkungan sekitar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills & Competencies</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>HTML & CSS</h3>
+                    <p>Layout, responsive, UI dasar</p>
+                </div>
+                <div class="skill-card">
+                    <h3>JavaScript</h3>
+                    <p>DOM manipulation & interaksi UI</p>
+                </div>
+                <div class="skill-card">
+                    <h3>SQL</h3>
+                    <p>Basic – Advanced</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Digital Content & Media</h3>
+                    <p>Design, video editing, social media</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Language Skills -->
+        <section id="languages">
+            <h2>Language Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Bahasa Indonesia</h3>
+                    <p>Native / Penutur Asli</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Bahasa Inggris</h3>
+                    <p>Basic / Dasar</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Bahasa Sunda</h3>
+                    <p>Native / Penutur Asli</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-box">
+                <p>Jika ingin melihat beberapa project yang telah saya kerjakan, silakan kunjungi GitHub saya untuk melihat portfolio lengkap dan source code dari berbagai project yang pernah saya develop.</p>
+                <a href="https://github.com/giangofalludhin" target="_blank" class="github-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    Visit My GitHub
+                </a>
+            </div>
+        </section>
+
+        <!-- Career Direction -->
+        <section id="direction">
+            <h2>Career Direction</h2>
+            <div class="direction-box">
+                Saya tidak membatasi arah karier hanya pada satu bidang. Saat ini, fokus saya adalah mendapatkan kesempatan kerja, belajar langsung di dunia kerja, dan mengembangkan kemampuan secara bertahap. Di bidang apa pun saya bekerja, saya berkomitmen untuk bekerja dengan serius dan bertanggung jawab.
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <a href="mailto:gofalludhin24@gmail.com">gofalludhin24@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <h3>Phone</h3>
+                    <a href="tel:082120458428">0821-2045-8428</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Gian Gofalludhin — Profile</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = navMenu.contains(event.target);
+            const isClickOnHamburger = hamburger.contains(event.target);
+            
+            if (!isClickInsideNav && !isClickOnHamburger && navMenu.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Profile Photo Spin Animation
+        const profilePhoto = document.getElementById('profilePhoto');
+        
+        profilePhoto.addEventListener('click', function() {
+            this.classList.add('spinning');
+            
+            // Remove class after animation completes
+            setTimeout(() => {
+                this.classList.remove('spinning');
+            }, 1000);
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a, .cta-button').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add parallax effect on scroll (optional enhancement)
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
